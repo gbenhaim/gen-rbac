@@ -1,0 +1,28 @@
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: remote-argocd
+  namespace: remote-argocd
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: remote-argocd
+  namespace: remote-argocd
+  annotations:
+    kubernetes.io/service-account.name: remote-argocd
+type: kubernetes.io/service-account-token
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: remote-argocd
+subjects:
+- kind: ServiceAccount
+  name: remote-argocd
+  namespace: remote-argocd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: appstudio-mgmt-argocd
