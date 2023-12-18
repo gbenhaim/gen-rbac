@@ -61,7 +61,7 @@ def create_gvk(r: Mapping) -> GVK:
     )
 
 
-def generate_cluster_role(gvk_buckets: bucket, name="argocd") -> Mapping:
+def generate_cluster_role(gvk_buckets: bucket, name="appstudio-mgmt-argocd") -> Mapping:
     role = {
         "kind": "ClusterRole",
         "apiVersion": "rbac.authorization.k8s.io/v1",
