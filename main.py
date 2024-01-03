@@ -76,7 +76,7 @@ def generate_cluster_role(gvk_buckets: bucket, name="appstudio-mgmt-argocd") -> 
         role["rules"].append(
             {
                 "apiGroups": [group],
-                "resources": sorted([gvk.kind for gvk in bucket]),
+                "resources": sorted([(gvk.kind + "s").lower() for gvk in bucket]),
                 "verbs": ["*"],
             }
         )
